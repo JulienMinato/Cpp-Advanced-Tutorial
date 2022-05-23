@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ECE42944283C328400A598F9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE42943283C328400A598F9 /* main.cpp */; };
+		ECE4294F283C338E00A598F9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE4294E283C338E00A598F9 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		ECE4293F283C328400A598F9 /* CopyFiles */ = {
+		ECE4294A283C338E00A598F9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,12 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		ECE42941283C328400A598F9 /* The Basics-HelloWorld */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "The Basics-HelloWorld"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECE42943283C328400A598F9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		ECE4294C283C338E00A598F9 /* the Basics-HelloWorld */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "the Basics-HelloWorld"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECE4294E283C338E00A598F9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		ECE4293E283C328400A598F9 /* Frameworks */ = {
+		ECE42949283C338E00A598F9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,7 +41,7 @@
 		ECE4291F283C30F000A598F9 = {
 			isa = PBXGroup;
 			children = (
-				ECE42942283C328400A598F9 /* The Basics-HelloWorld */,
+				ECE4294D283C338E00A598F9 /* the Basics-HelloWorld */,
 				ECE42929283C30F000A598F9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,37 +49,37 @@
 		ECE42929283C30F000A598F9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ECE42941283C328400A598F9 /* The Basics-HelloWorld */,
+				ECE4294C283C338E00A598F9 /* the Basics-HelloWorld */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ECE42942283C328400A598F9 /* The Basics-HelloWorld */ = {
+		ECE4294D283C338E00A598F9 /* the Basics-HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
-				ECE42943283C328400A598F9 /* main.cpp */,
+				ECE4294E283C338E00A598F9 /* main.cpp */,
 			);
-			path = "The Basics-HelloWorld";
+			path = "the Basics-HelloWorld";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ECE42940283C328400A598F9 /* The Basics-HelloWorld */ = {
+		ECE4294B283C338E00A598F9 /* the Basics-HelloWorld */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ECE42945283C328400A598F9 /* Build configuration list for PBXNativeTarget "The Basics-HelloWorld" */;
+			buildConfigurationList = ECE42950283C338E00A598F9 /* Build configuration list for PBXNativeTarget "the Basics-HelloWorld" */;
 			buildPhases = (
-				ECE4293D283C328400A598F9 /* Sources */,
-				ECE4293E283C328400A598F9 /* Frameworks */,
-				ECE4293F283C328400A598F9 /* CopyFiles */,
+				ECE42948283C338E00A598F9 /* Sources */,
+				ECE42949283C338E00A598F9 /* Frameworks */,
+				ECE4294A283C338E00A598F9 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "The Basics-HelloWorld";
-			productName = "The Basics-HelloWorld";
-			productReference = ECE42941283C328400A598F9 /* The Basics-HelloWorld */;
+			name = "the Basics-HelloWorld";
+			productName = "the Basics-HelloWorld";
+			productReference = ECE4294C283C338E00A598F9 /* the Basics-HelloWorld */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -91,7 +91,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
-					ECE42940283C328400A598F9 = {
+					ECE4294B283C338E00A598F9 = {
 						CreatedOnToolsVersion = 13.4;
 					};
 				};
@@ -109,17 +109,17 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ECE42940283C328400A598F9 /* The Basics-HelloWorld */,
+				ECE4294B283C338E00A598F9 /* the Basics-HelloWorld */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		ECE4293D283C328400A598F9 /* Sources */ = {
+		ECE42948283C338E00A598F9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECE42944283C328400A598F9 /* main.cpp in Sources */,
+				ECE4294F283C338E00A598F9 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,7 +235,7 @@
 			};
 			name = Release;
 		};
-		ECE42946283C328400A598F9 /* Debug */ = {
+		ECE42951283C338E00A598F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -243,7 +243,7 @@
 			};
 			name = Debug;
 		};
-		ECE42947283C328400A598F9 /* Release */ = {
+		ECE42952283C338E00A598F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -263,11 +263,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ECE42945283C328400A598F9 /* Build configuration list for PBXNativeTarget "The Basics-HelloWorld" */ = {
+		ECE42950283C338E00A598F9 /* Build configuration list for PBXNativeTarget "the Basics-HelloWorld" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ECE42946283C328400A598F9 /* Debug */,
-				ECE42947283C328400A598F9 /* Release */,
+				ECE42951283C338E00A598F9 /* Debug */,
+				ECE42952283C338E00A598F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
