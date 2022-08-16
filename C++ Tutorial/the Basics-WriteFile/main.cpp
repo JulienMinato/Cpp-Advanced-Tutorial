@@ -17,6 +17,9 @@ int main()
   poem.append( "\n\tUpon that little tent of blue" ) ;
   poem.append( "\n\tWhich prisoners call the sky" ) ;
 
+//Mac has weird file permissions
+// How to fix?
+// Using FILE SYSTEM.H
   ofstream writer( "poem.txt" ) ;
 
   if( ! writer )
