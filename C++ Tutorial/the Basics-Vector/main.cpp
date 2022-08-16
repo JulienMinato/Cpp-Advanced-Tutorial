@@ -3,8 +3,6 @@
 //  the Basics-Vector
 //
 //  Created by Liang Zhao on 8/15/22.
-//
-
 #include <vector>
 #include <iostream>
 using namespace std ;
