@@ -12,6 +12,7 @@ using namespace std ;
 
 int main()
 {
+    
   string poem = "\n\tI never saw a man who looked" ;
   poem.append( "\n\tWith such a wistful eye" ) ;
   poem.append( "\n\tUpon that little tent of blue" ) ;
@@ -33,4 +34,5 @@ int main()
   writer.close() ;
 
   return 0 ;
+    
 }
