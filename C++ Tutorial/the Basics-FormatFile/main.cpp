@@ -33,7 +33,8 @@ int main()
   }
   reader.close() ;
   
-  i = 0 ; // Reset the counter.
+// Reset the counter.
+  i = 0 ;
 
   while( i < RANGE ) // Display each record.
   {
