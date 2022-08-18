@@ -32,7 +32,6 @@ int main()
       getline( reader, tab[ i++ ], '\t' ); // Otherwise stop at \t.
   }
   reader.close() ;
-    
   
   i = 0 ; // Reset the counter.
 
