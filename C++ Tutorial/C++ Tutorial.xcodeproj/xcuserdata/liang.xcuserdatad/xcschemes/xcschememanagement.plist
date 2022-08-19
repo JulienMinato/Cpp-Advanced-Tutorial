@@ -34,6 +34,11 @@
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
+		<key>the Basics-MultOjbects.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
 		<key>the Basics-ReadFile.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
