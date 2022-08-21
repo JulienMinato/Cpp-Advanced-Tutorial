@@ -20,6 +20,7 @@
 		ECF55C5728AE06C100B004FA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF55C5628AE06C100B004FA /* main.cpp */; };
 		ECF55C6228AF4A8400B004FA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF55C6128AF4A8400B004FA /* main.cpp */; };
 		ECF55C6D28AFE69800B004FA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF55C6C28AFE69800B004FA /* main.cpp */; };
+		ECF55C7828B2FB0700B004FA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF55C7728B2FB0700B004FA /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -140,6 +141,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		ECF55C7328B2FB0700B004FA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -169,6 +179,8 @@
 		ECF55C6128AF4A8400B004FA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		ECF55C6A28AFE69800B004FA /* the Basics-Except */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "the Basics-Except"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECF55C6C28AFE69800B004FA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		ECF55C7528B2FB0700B004FA /* the Basics-MacroFunctions */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "the Basics-MacroFunctions"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECF55C7728B2FB0700B004FA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +275,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ECF55C7228B2FB0700B004FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -282,6 +301,7 @@
 				ECF55C5528AE06C100B004FA /* the Basics-FormatFile */,
 				ECF55C6028AF4A8400B004FA /* the Basics-MultOjbects */,
 				ECF55C6B28AFE69800B004FA /* the Basics-Except */,
+				ECF55C7628B2FB0700B004FA /* the Basics-MacroFunctions */,
 				ECE42929283C30F000A598F9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -302,6 +322,7 @@
 				ECF55C5428AE06C100B004FA /* the Basics-FormatFile */,
 				ECF55C5F28AF4A8400B004FA /* the Basics-MultOjbects */,
 				ECF55C6A28AFE69800B004FA /* the Basics-Except */,
+				ECF55C7528B2FB0700B004FA /* the Basics-MacroFunctions */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -408,6 +429,14 @@
 				ECF55C6C28AFE69800B004FA /* main.cpp */,
 			);
 			path = "the Basics-Except";
+			sourceTree = "<group>";
+		};
+		ECF55C7628B2FB0700B004FA /* the Basics-MacroFunctions */ = {
+			isa = PBXGroup;
+			children = (
+				ECF55C7728B2FB0700B004FA /* main.cpp */,
+			);
+			path = "the Basics-MacroFunctions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -634,6 +663,23 @@
 			productReference = ECF55C6A28AFE69800B004FA /* the Basics-Except */;
 			productType = "com.apple.product-type.tool";
 		};
+		ECF55C7428B2FB0700B004FA /* the Basics-MacroFunctions */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECF55C7B28B2FB0700B004FA /* Build configuration list for PBXNativeTarget "the Basics-MacroFunctions" */;
+			buildPhases = (
+				ECF55C7128B2FB0700B004FA /* Sources */,
+				ECF55C7228B2FB0700B004FA /* Frameworks */,
+				ECF55C7328B2FB0700B004FA /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "the Basics-MacroFunctions";
+			productName = "the Basics-MacroFunctions";
+			productReference = ECF55C7528B2FB0700B004FA /* the Basics-MacroFunctions */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -682,6 +728,9 @@
 					ECF55C6928AFE69800B004FA = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
+					ECF55C7428B2FB0700B004FA = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 				};
 			};
 			buildConfigurationList = ECE42923283C30F000A598F9 /* Build configuration list for PBXProject "C++ Tutorial" */;
@@ -710,6 +759,7 @@
 				ECF55C5328AE06C100B004FA /* the Basics-FormatFile */,
 				ECF55C5E28AF4A8400B004FA /* the Basics-MultOjbects */,
 				ECF55C6928AFE69800B004FA /* the Basics-Except */,
+				ECF55C7428B2FB0700B004FA /* the Basics-MacroFunctions */,
 			);
 		};
 /* End PBXProject section */
@@ -816,6 +866,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECF55C6D28AFE69800B004FA /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECF55C7128B2FB0700B004FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECF55C7828B2FB0700B004FA /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1139,6 +1197,22 @@
 			};
 			name = Release;
 		};
+		ECF55C7928B2FB0700B004FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		ECF55C7A28B2FB0700B004FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1264,6 +1338,15 @@
 			buildConfigurations = (
 				ECF55C6F28AFE69800B004FA /* Debug */,
 				ECF55C7028AFE69800B004FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ECF55C7B28B2FB0700B004FA /* Build configuration list for PBXNativeTarget "the Basics-MacroFunctions" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECF55C7928B2FB0700B004FA /* Debug */,
+				ECF55C7A28B2FB0700B004FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
