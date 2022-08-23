@@ -28,32 +28,47 @@ int main()
 }
 
 
-#include <string>
+
 #include <iostream>
 using namespace std ;
 
+class Parent
+{
+  public:
+    void Common() const { cout << "I am part of this family, " ; }
+    virtual void Identify() const { cout << "I am the parent" << endl ; }
+} ;
+
+class Child : public Parent
+{
+  public :
+    void Identify() const { cout << "I am the child" << endl ;  }
+} ;
+
+class Grandchild : public Child
+{
+  public :
+    void Identify() const { cout << "I am the grandchild" << endl ; }
+    void Relate() const { cout << "Grandchild has parent and grandparent" << endl ; }
+} ;
+
 int main()
 {
-  string text = "I can resist anything but temptation." ;
-  int num ;
+  Child son ;
+  Grandchild grandson ;
 
-  num = text.find( "resist" , 0 ) ;
-  cout << "Position: " << num << endl ;
+  Parent* ptrChild = &son ;
+    Parent* ptrGrandchild = &grandson ;
 
-  num = text.find( "nonsuch" , 0 ) ;
-  cout << "Result: " << num << endl ;
+  ptrChild -> Common() ;
+  ptrChild -> Identify( ) ;
+  ptrGrandchild -> Common() ;
+  ptrGrandchild -> Identify( ) ;
 
-  num = text.find_first_of( "If" ) ;
-  cout << "First I: " << num << endl ;
+  ptrChild -> Parent::Common() ;
+  ptrChild -> Parent::Identify( ) ;
 
-  num = text.find_first_not_of( "If" ) ;
-  cout << "First not I: " << num << endl ;
-
-  num = text.find_last_of( "t" ) ;
-  cout << "Last t: " << num << endl ;
-
-  num = text.find_last_not_of( "t" ) ;
-  cout << "Last not t: " << num << endl ;
+  grandson.Relate() ;
 
   return 0 ;
 }
