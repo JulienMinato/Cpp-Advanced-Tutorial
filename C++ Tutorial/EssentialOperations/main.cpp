@@ -77,7 +77,7 @@ public:
         for (int i = 0; i != v.size_; i++) // copy elements
             p[i] = v.elem_[i];
         
-        delete[] elem_; // delete old elements from the this/current object
+        delete[] elem_; // delete the object data
         
         elem_ = p;
         size_ = v.size_;
@@ -96,11 +96,56 @@ public:
         Vector res(size_); // it calls the ordinary constructor
         for (int i = 0; i < size_; i++)
             res.elem_[i] = elem_[i] + v.elem_[i];
-        
-        return res; // it will be copied and then it is destroyed afterwards
+    
+        // since we defined a Move Assignment, the compiler know that it will be returned a temporary object,
+        // then the Move Assignment is called automatically
+        // afterwards, it is destroyed
+        return res;
+    }
+    
+    
+    // Move Constructor
+    // it does not take a const argument: after all, a move constructor is supposed to remove the
+    // value from its argument.
+    Vector(Vector&& v) :
+            elem_{v.elem_}, // "grab the elements" from v: elem_ now points to v.elem_
+            size_{v.size_}
+    {
+        std::cout << "Move Constructor for Vector\n";
+    
+        v.elem_ = nullptr; // now v has no elements
+        v.size_ = 0;
+    }
+    
+    
+    // Move Assignment
+    Vector& operator=(Vector&& v) {
+        std::cout << "Move Assignment for Vector\n";
+    
+        // if the object isn't being called on itself
+        if (this != &v) {
+            delete[] elem_; // delete the object data
+            
+            // "Move" v's data into the current object
+            elem_ = v.elem_;
+            size_ = v.size_;
+            
+            // Mark the v object as "empty"
+            v.elem_ = nullptr; // now v has no elements
+            v.size_ = 0;
+            
+            return *this;
+        }
     }
 };
 
+
+Vector foo() {
+    // since we defined a Move Assignment, the compiler know that it will be returned a temporary object,
+    // then the Move Assignment is called automatically
+    // afterwards, it is destroyed
+    return Vector{-1, -1, -1};
+}
 
 
 int main() {
@@ -117,14 +162,34 @@ int main() {
     z.print();
     
     std::cout << "r = x + y + z\n";
-    Vector r; // default constructor for Vector
-    // for each +, we have
-    // one ordinary constructor for Vector
-    // one destroyer for res (see the operator+ function)
-    r = x + y + z;
+    Vector r;
+    r = x + y + z; // it calls the Move Assigment
     r.print();
+
+    std::cout << "s = foo()\n";
+    Vector s = foo(); // there is a compilation optimization; the values are put directly in s;
+                      // there is no calls for constructor, move/copy assigment, destroyer (for the temp object inside foo())
+    s.print();
     
-    // the solution is Move Constructors and Move Assignment (see file: 5-move-constructor-move-assignment.cpp)
+    std::cout << "t = foo()\n";
+    Vector t; // it calls the default constructor
+    t = foo(); // it calls the Move Assignment lastly
+    t.print();
+    
+    std::cout << "Vector a = std::move(x)\n";
+    Vector a = std::move(x); // it calls the Move Constructor
+    a.print();
+    
+    std::cout << "x after std::move\n";
+    x.print();
+    
+    std::cout << "b = std::move(y)\n";
+    Vector b; // it calls the default constructor
+    b = std::move(y); // it calls the Move Assigment
+    b.print();
+    
+    std::cout << "y after std::move\n";
+    y.print();
     
     return 0;
 }
