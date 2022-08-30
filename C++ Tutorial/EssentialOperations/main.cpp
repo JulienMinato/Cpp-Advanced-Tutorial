@@ -6,7 +6,6 @@ using std::endl;
 
 // Codes based on the book: Stephen Prata, "C++ Primer Plus", 6th edition (2012), chapter 18
 
-
 // A Functor whose operator() checks if a given X is divisive by a pre-defined divisor (defined in the constructor)
 class f_mod {
 private:
@@ -22,49 +21,57 @@ public:
 };
 
 
-// a specific function that checks if x is divisive by 5
-bool f_mod5(int x) {
-    return (x % 5) == 0;
-}
-
-
 int main() {
     std::vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     
-    // The STL `count_if` function applies a given function (3rd argument) to all elements
-    // from a container, in a specific range (1st and 2nd arguments), and counts the number of
-    // trues returned by the function.
-    // We can use a specific function or a Functor
-    
-    // counts how many numbers are divisive by 2
+    // counting by Functor
     f_mod fmod2{2};
-    int count2 = std::count_if(v.begin(), v.end(), fmod2);
-    cout << "count2 = " << count2 << endl << endl;
+    int count2_by_functor = std::count_if(v.begin(), v.end(), fmod2);
+    cout << "count2_by_functor = " << count2_by_functor << endl;
+    
+    // counting by Lambda Function: [](int x) {return x % 2 == 0;}
+    int count2_by_lambda = std::count_if(v.begin(), v.end(), [](int x) {return x % 2 == 0;});
+    cout << "count2_by_lambda = " << count2_by_lambda << endl << endl;
+    
     
     // counts how many numbers are divisive by 3
     f_mod fmod3{3};
-    int count3 = std::count_if(v.begin(), v.end(), fmod3);
-    cout << "count3 = " << count3 << endl << endl;
+    int count3_by_functor = std::count_if(v.begin(), v.end(), fmod3);
+    cout << "count3_by_functor = " << count3_by_functor << endl;
     
-    // Counts how many numbers are divisive by 5
-    // Note we are using a specific function to it.
-    int count5 = std::count_if(v.begin(), v.end(), f_mod5);
-    cout << "count5 = " << count5 << endl << endl;
+    int count3_by_lambda = std::count_if(v.begin(), v.end(), [](int x) {return x % 3 == 0;});
+    cout << "count3_by_lambda = " << count3_by_lambda << endl << endl;
     
-    // PROBLEM:
-    // Create a specific function for each possibility is impracticable.
-    // Moreover, its definition can be located possibly quite far from its use.
-    //
-    // Functors can be pretty good because a class, including a functor class, can be defined inside a function,
-    // so the definition can be located close to the point of use.
-    // It is flexible as well.
-    //
-    // In terms of brevity, the functor code is more verbose: we have some code lines to define the class and
-    // we have to correctly instantiate its objects.
-    //
-    // SOLUTION:
-    // Since we only need to use a simple and flexible function for this example,
-    // we could use lambda functions/expressions... see example: 6-lambda-functions1.cpp
+    
+    // In terms of brevity, the functor code is more verbose than the equivalent function or lambda code.
+    // Functions and lambdas are approximately equally brief.
+    // One apparent exception would be if you had to use a lambda twice:
+    int count5_by_lambda = std::count_if(v.begin(), v.end(), [](int x) {return x % 5 == 0;});
+    int count5_by_lambda_again = std::count_if(v.begin(), v.end(), [](int x) {return x % 5 == 0;});
+    cout << "count5_by_lambda = " << count5_by_lambda << endl;
+    cout << "count5_by_lambda_again = " << count5_by_lambda_again << endl << endl;
+    
+    // But you don’t actually have to write out the lambda twice.
+    // Essentially, you can create a name for the anonymous lambda and then use the name twice:
+    auto lambda_mod7 = [](int x){return x % 7 == 0;}; // lambda_mod7 a name for the lambda
+    
+    int count7_by_lambda = std::count_if(v.begin(), v.end(), lambda_mod7);
+    int count7_by_lambda_again = std::count_if(v.begin(), v.end(), lambda_mod7);
+    cout << "count7_by_lambda = " << count7_by_lambda << endl;
+    cout << "count7_by_lambda_again = " << count7_by_lambda_again << endl << endl;
+    
+    // Thus, we even can use this no-longer-anonymous lambda as an ordinary function:
+    bool result = lambda_mod7(10); // result is true if 10 % 7 == 0
+    
+    
+    // We still can use auto for the parameter datatypes, so that the lambda function becomes more generic
+    // PS: it does not make sense for this problem, but it is just an example of how to use auto
+    auto lambda_mod8 = [](auto x){ return x % 8 == 0; };
+    
+    
+    // Unlike an ordinary function, however, a named lambda can be defined inside a function.
+    // The actual type for lambda_mod7 will be some implementation-dependent type that the compiler uses
+    // to keep track of lambdas.
     
     return 0;
 }
