@@ -1,51 +1,71 @@
 #include <iostream>
-#include <list>
+#include <vector>
 
-#include "vector.h"
+using std::cout;
+using std::endl;
+
+// Codes based on the book: Stephen Prata, "C++ Primer Plus", 6th edition (2012), chapter 18
+
+
+// A Functor whose operator() checks if a given X is divisive by a pre-defined divisor (defined in the constructor)
+class f_mod {
+private:
+    int dv_;
+
+public:
+    f_mod(int dv = 1) : dv_{dv} {}
+    
+    // Is x divisive by dv_?
+    bool operator()(int x) {
+        return (x % dv_) == 0;
+    }
+};
+
+
+// a specific function that checks if x is divisive by 5
+bool f_mod5(int x) {
+    return (x % 5) == 0;
+}
 
 
 int main() {
-    // Usually, we split declarations and definitions in header (.h) and source file (.cpp) separately.
-    // Then we compile the source file to generate an object file (.o)
-    // When compiling a new source file that uses the other one, we just use its object file (.o) and its header file (.h).
-    // Thus, the compiler does not know details about implementations during this compilation.
-
-    // However, this does not work for Template classes/functions.
+    std::vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     
-    // To correctly compile/link a source file (like the current one) that uses/includes a header file with
-    // template functions, the compiler needs to know the both declarations and definitions during this compilation.
-    // We have some solutions for that.
+    // The STL `count_if` function applies a given function (3rd argument) to all elements
+    // from a container, in a specific range (1st and 2nd arguments), and counts the number of
+    // trues returned by the function.
+    // We can use a specific function or a Functor
     
-    // ### Solution 1 ###
-    // Physically move the definitions of the template functions into the header file (.h)
-    // cons:
-    // It may (or may not!) cause significant code bloat, meaning your executable size may increase dramatically
-    // (or, if your compiler is smart enough, may not; try it and see).
-    // That is, each header/source file that includes that header file are going to put those definitions,
-    // increasing the amount of text.
-
-    // See a more complete explanation on:
-    // https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl
-    // https://www.codeproject.com/Articles/48575/How-to-define-a-template-class-in-a-h-file-and-imp
+    // counts how many numbers are divisive by 2
+    f_mod fmod2{2};
+    int count2 = std::count_if(v.begin(), v.end(), fmod2);
+    cout << "count2 = " << count2 << endl << endl;
     
+    // counts how many numbers are divisive by 3
+    f_mod fmod3{3};
+    int count3 = std::count_if(v.begin(), v.end(), fmod3);
+    cout << "count3 = " << count3 << endl << endl;
     
-    Vector<int> v(100);
-    v[0] = 10;
-    std::cout << "v[0] = " << v[0] << std::endl;
+    // Counts how many numbers are divisive by 5
+    // Note we are using a specific function to it.
+    int count5 = std::count_if(v.begin(), v.end(), f_mod5);
+    cout << "count5 = " << count5 << endl << endl;
     
-    Vector<char> vc(200);
-    vc[0] = 'A';
-    std::cout << "vc[0] = " << vc[0] << std::endl;
-    
-    Vector<double> vd(200);
-    vd[0] = 2.5;
-    std::cout << "vd[0] = " << vd[0] << std::endl;
-    
-    Vector<std::string> vs(17);
-    vs[0] = "A Tour of C++";
-    std::cout << "vs[0] = " << vs[0] << std::endl;
-    
-    Vector<std::list<int>> vli(45);
+    // PROBLEM:
+    // Create a specific function for each possibility is impracticable.
+    // Moreover, its definition can be located possibly quite far from its use.
+    //
+    // Functors can be pretty good because a class, including a functor class, can be defined inside a function,
+    // so the definition can be located close to the point of use.
+    // It is flexible as well.
+    //
+    // In terms of brevity, the functor code is more verbose: we have some code lines to define the class and
+    // we have to correctly instantiate its objects.
+    //
+    // SOLUTION:
+    // Since we only need to use a simple and flexible function for this example,
+    // we could use lambda functions/expressions... see example: 6-lambda-functions1.cpp
     
     return 0;
 }
+
