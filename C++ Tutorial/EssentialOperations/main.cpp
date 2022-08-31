@@ -8,28 +8,36 @@ using std::endl;
 // Bjarne Stroustrup, "A Tour of C++", 2nd edition (2018).
 
 
+void print_vector(const std::vector<int> v) {
+    for (int i = 0; i < v.size(); i++)
+        cout << " " << v[i];
+    cout << "\n";
+}
+
+
+
 int main() {
     std::vector<int> v = {1, 2, 3, 4, 5};
-    int
+    
+    int sum = 0;
+    int mult = 1;
     
     // A lambda function can access/capture any automatic variable in its scope.
     
-    // [] : capture nothing (no variable)
-    auto print = [](const int& n) { cout << " " << n; };
+    cout << "vector of x values\n";
+    print_vector(v);
     
-    cout << "before: ";
-    std::for_each(v.begin(), v.end(), print);     // for each applies the defined function (3rd argument)
-                                                  // for all elements from a container for a given range
-    cout << '\n';
+    // [&] : capture all local names used in the lambda function by reference
+    std::for_each(v.begin(), v.end(), [&](const int& x) { sum += x; mult *= x; });
+    cout << "sum = " << sum << "\n";
+    cout << "mult = " << mult << "\n";
     
-    
-    // increases each element of the vector
-    // each element from the vector is passed as reference to the lambda function,
-    // then it is incremented
-    cout << "after:  ";
-    std::for_each(v.begin(), v.end(), [](int& n) { n++; });
-    std::for_each(v.begin(), v.end(), print);
-    cout << "\n";
+    // [&name1, &name2, ...] : capture the variables name1, name2, ... by reference
+    sum = 0;
+    mult = 1;
+    std::for_each(v.begin(), v.end(), [&sum, &mult](const int& x) { sum += x; mult *= x; });
+    cout << "sum = " << sum << "\n";
+    cout << "mult = " << mult << "\n";
     
     
     return 0;
