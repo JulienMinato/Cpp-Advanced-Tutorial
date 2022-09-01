@@ -1,36 +1,37 @@
-#include "vector.h"
+#include <iostream>
 
-#include <list>
+#include <cstdio>
+
+using std::cout;
+using std::string;
 
 
-template <typename T>
-Vector<T>::Vector(int size) {
-    std::cout << "ordinary constructor for Vector\n";
+int main() {
+    string first_name1 = "Joao";
+    string last_name1 = "Martins";
+    string name1 = first_name1 + " " + last_name1;
     
-    if (size < 0)
-        throw std::length_error("Vector constructor: negative size");
+    cout << "Name1: " << name1 << "\n";
+    printf("Name1 (C-style string): %s\n\n", name1.c_str());
     
-    size_ = size;
-    elem_ = new T[size];
+    
+    string first_name2 = "Maria";
+    string last_name2 = "Souza";
+    string name2 = first_name2 + " " + last_name2;
+    
+    cout << "Name2: " << name2 << "\n\n";
+    
+    if (first_name1 == first_name2)
+        cout << "First Names are equal\n";
+    else if (first_name1 == "Joao")
+        cout << "First Name is Joao\n";
+    
+    
+    string last_name1_again = name1.substr(5, 11);
+    cout << "last_name1_again = " << last_name1_again;
+    
+    // there are a lot of other useful functions for strings
+    
+    
+    return 0;
 }
-
-
-template<typename T>
-T& Vector<T>::operator[](int i) const {
-    return elem_[i];
-}
-
-// adding some possible template classes for Vector
-template class Vector<int>;
-template class Vector<char>;
-template class Vector<double>;
-template class Vector<std::list<int>>;
-
-
-template<typename T>
-void foo(T& val) {
-    std::cout << "val = " << val << "\n";
-}
-
-// adding template classes to the template function foo
-template void foo<int>(int& val);
