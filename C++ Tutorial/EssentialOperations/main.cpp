@@ -1,37 +1,41 @@
 #include <iostream>
 
-#include <cstdio>
-
 using std::cout;
 using std::string;
 
 
+
+// does s contain the character c?
+// PS: it could be other kind of types here
+bool has_c(const string& s, char c) {
+    // find = returns an iterator to the first element in the range [first, last) that compares equal to val.
+    // If no such element is found, the function returns last (end()) to indicate “not found.”
+    auto p = find(s.begin(), s.end(), c);
+    
+    if (p != s.end())
+        return true;
+    else
+        return false;
+}
+
+
+// short version
+bool has_c_short(const string& s, char c) {
+    return find(s.begin(), s.end(), c) != s.end();
+}
+
+
+string bool_to_string(bool b) {
+    return (b) ? "true" : "false";
+}
+
+
 int main() {
-    string first_name1 = "Joao";
-    string last_name1 = "Martins";
-    string name1 = first_name1 + " " + last_name1;
+    string str = "A nice sentence here!";
     
-    cout << "Name1: " << name1 << "\n";
-    printf("Name1 (C-style string): %s\n\n", name1.c_str());
-    
-    
-    string first_name2 = "Maria";
-    string last_name2 = "Souza";
-    string name2 = first_name2 + " " + last_name2;
-    
-    cout << "Name2: " << name2 << "\n\n";
-    
-    if (first_name1 == first_name2)
-        cout << "First Names are equal\n";
-    else if (first_name1 == "Joao")
-        cout << "First Name is Joao\n";
-    
-    
-    string last_name1_again = name1.substr(5, 11);
-    cout << "last_name1_again = " << last_name1_again;
-    
-    // there are a lot of other useful functions for strings
-    
+    cout << "str has 's'? " << bool_to_string(has_c(str, 's')) << "\n";
+    cout << "str has 's'? " << bool_to_string(has_c_short(str, 'x')) << "\n";
     
     return 0;
 }
+
