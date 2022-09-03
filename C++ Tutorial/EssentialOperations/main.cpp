@@ -1,65 +1,75 @@
 #include <iostream>
 #include <vector>
-#include <list>
 
 using std::cout;
-using std::cerr;
 using std::string;
 using std::vector;
-using std::list;
 
 
-// We can generalize the function find_all()
+
+class NamePhone {
+private:
+    string name_;
+    int phone_;
+
+public:
+    NamePhone(string name_in, int phone_in) : name_{name_in}, phone_{phone_in} {};
+    string name() const { return name_; }
+    int phone() const { return phone_; }
+};
+
+
+// We can use std::sort to sort our own Classes.
+// For this, we must define the operations less than (<), greater than (<), and equal (==)
 //
-// The typename is needed to inform the compiler that C ’s iterator is supposed to be a
-// type and not a value of some type, say, the integer 7
-//
-// We can hide this implementation detail by introducing a type alias
+// We must define these functions out of the Class, because std::sort expects these functions with
+// two arguments.
+// When defining these functions inside the class, they only have one parameter and this is not work.
+bool operator<(const NamePhone& x, const NamePhone& y) {// less than
+    return x.name() < y.name(); // order NamePhones by their names
+}
 
-template<typename T>
-using Iterator = typename T::iterator; // T's iterator
+bool operator==(const NamePhone& x, const NamePhone& y) {// less than
+    return x.name() == y.name(); // order NamePhones by their names
+}
 
-template<typename C, typename V>
-vector<Iterator<C>> find_all(C& c, V v) {
-    vector<Iterator<C>> res;
-    
-    for (auto p = c.begin(); p != c.end(); ++p) {
-        if (*p == v)
-            res.push_back(p);
-    }
-    
-    return res;
+bool operator>(const NamePhone& x, const NamePhone& y) {// less than
+    return x.name() > y.name(); // order NamePhones by their names
 }
 
 
-void test() {
-    string m {"Mary had a little lamb"};
-    for (auto p : find_all(m, 'a')) { // p is a string::iterator
-        if (*p!='a')
-            cerr << "string bug!\n";
-    }
-    
-    list<double> ld {1.1, 2.2, 3.3, 1.1};
-    for (auto p : find_all(ld, 1.1)) { // p is a list<double>::iterator
-        if (*p != 1.1)
-            cerr << "list bug!\n";
-    }
-    
-    vector<string> vs { "red", "blue", "green", "green", "orange", "green" };
-    for (auto p : find_all(vs, "red")) { // p is a vector<string>::iterator
-        if (*p != "red")
-            cerr << "vector bug!\n";
-    }
-    
-    for (auto p : find_all(vs, "green"))
-        *p = "vert";
+
+void print(const vector<NamePhone>& phone_book) {
+    int i = 0;
+    for (const auto& book : phone_book)
+        cout << "[" << i++ << "] = {" << book.name() << ", " << book.phone() << "}\n";
+    cout << "\n";
 }
 
 
 
 int main() {
-    test();
+    vector<NamePhone> phone_book = {
+            {"Maria Joaquina", 1234},
+            {"Carla da Silva", 5677},
+            {"Joao da Silva", 9999},
+            {"Bruno Andrade", 7777}
+    };
+    
+    cout << "phone book\n";
+    print(phone_book);
+    cout << "\n";
+    
+    cout << "ascending book\n";
+    std::sort(phone_book.begin(), phone_book.end());
+    print(phone_book);
+    cout << "\n";
+    
+    cout << "descending book\n";
+    std::sort(phone_book.begin(), phone_book.end(), std::greater<>());
+    print(phone_book);
+    cout << "\n";
+    
     
     return 0;
 }
-
