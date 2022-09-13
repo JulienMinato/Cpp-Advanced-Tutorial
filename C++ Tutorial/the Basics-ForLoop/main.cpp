@@ -64,6 +64,8 @@ int main()
     // currVal is the number we're counting; we'll read new values into val
     int currVal = 0, val = 0;
 
+    // if input "12 1 2 3 1 3 2 12 13 12 13 1 3 2", error, how to fix?
+    // build a list to save all the num
     // read first number and ensure that we have data to process
     if (std::cin >> currVal) {
         int cnt = 1;  // store the count for the current value we're processing
